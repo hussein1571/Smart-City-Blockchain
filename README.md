@@ -1,5 +1,5 @@
 # Smart City :sparkles:
-![banner](./Smart-City.jpg_47298248.jpg)
+![banner](./Smart-City.jpg)
 
 
 Building and running the application
