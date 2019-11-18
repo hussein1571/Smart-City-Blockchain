@@ -50,12 +50,12 @@ sd init < moniker> --chain-id smartcity
 # Copy the `Address` output here and save it for later use
 # [optional] add "--ledger" at the end to use a Ledger Nano S
 
-scli keys add validator
+scli keys add jack
 
 
 # Add account, with coins to the genesis file
 
-sd add-genesis-account $(scli keys show validator -a) 1000000token,1000000000stake
+sd add-genesis-account $(scli keys show jack -a) 100000000000000stake
 
 
 # Configure your CLI to eliminate need for chain-id flag
@@ -120,33 +120,31 @@ scli query account $(scli keys show validator -a)
 
 # get your first info from sensor using your coins from the genesis file
 
-scli tx smartcity get-info <le nom de capteur> 10token --from validator
+scli tx smartcity get-info <timestamp received from the ttn> co2 co ph turbi longitude latitude  --from jack
 
-# Set the value for the capteur you just get
-
-scli tx smartcity set-info < le nom de capteur > < valeur de capteur > --from validator
 
 #you can also query a single transaction by its hash using the following command:
 
 scli query tx [hash]
 
-# Try out a resolve query against the info you registered
-scli query smartcity resolve < le nom de capteur >
+#try to query all timestamp in your blockchain
+
+scli query smartcity times
 
 # Try out a GiveInfo query against the info you just registered
 
-scli query smartcity GiveInfo < le nom de capteur >
+scli query smartcity GiveInfo < timestamp>
 
 # > {"value":"","owner":"cosmos1l7k5tdt2qam0zecxrx78yuw447ga54dsmtpk2s","price":[{"denom":"token","amount":"10"}]}
 
 
 # Validator decides to delete the value 
 
-scli tx smartcity delete-info  < le nom de capteur > --from validator
+scli tx smartcity delete-info  < le nom de capteur > --from jack
 
 # Try out a GiveInfo query against the info you just deleted
 
-scli query smartcity GiveInfo < le nom de capteur >
+scli query smartcity GiveInfo < timestamp >
 
 # > {"value":"","owner":"","price":[{"denom":"token","amount":"1"}]}
 ```
