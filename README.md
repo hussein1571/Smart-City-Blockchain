@@ -7,6 +7,12 @@ Building the smartcity application
 If you want to build the smartcity application in this repo to see the functionalities, Go 1.13.0+ is required .
 
 Add some parameters to environment is necessary if you have never used the go mod before.
+re
+node.js file you have to run :
+
+npm install (in order to have node_modules )
+
+
 
 ```mkdir -p $HOME/go/bin
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile
