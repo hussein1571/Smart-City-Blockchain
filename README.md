@@ -44,7 +44,7 @@ NOTE: If you have the Cosmos app for ledger and you want to use it, when you cre
 
 #NOTE: !!!!!!!!!!!!!!!! you can run all these steps by running the file ```launch.sh```
 
-------> if you juste want to create the blockchain you can run all these steps on the terminal cmd:
+------> if you just want to create the blockchain you can run all these steps on the terminal cmd:
 ```bash
 # Initialize configuration files and genesis file
   # moniker is the name of your node
