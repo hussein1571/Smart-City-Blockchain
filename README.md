@@ -7,12 +7,6 @@ Building the smartcity application
 If you want to build the smartcity application in this repo to see the functionalities, Go 1.13.0+ is required .
 
 Add some parameters to environment is necessary if you have never used the go mod before.
-re
-node.js file you have to run :
-
-npm install (in order to have node_modules )
-
-
 
 ```mkdir -p $HOME/go/bin
 echo "export GOPATH=$HOME/go" >> ~/.bash_profile
@@ -33,6 +27,12 @@ make install
 sd help
 scli help
 ```
+Now after installing the application, go to the ```./t ```folder (``` %GOPATH/hussein1571/smartcity/t ```).
+To run``` script.js``` file you have to run :
+```
+npm install (in order to install all node_modules )
+
+```
 Running the live network and using the commands
 To initialize configuration and a genesis.json file for your application and an account for the transactions, start by running:
 
@@ -41,6 +41,10 @@ NOTE: In the below commands addresses are pulled using terminal utilities. You c
 NOTE: If you have run the tutorial before, you can start from scratch with a ```sd unsafe-reset-all``` or by deleting both of the home folders ```rm -rf ~/.s*```
 
 NOTE: If you have the Cosmos app for ledger and you want to use it, when you create the key with nscli keys add jack just add --ledger at the end. That's all you need. When you sign, jack will be recognized as a Ledger key and will require a device.
+
+#NOTE: !!!!!!!!!!!!!!!! you can run all these steps by running the file ```launch.sh```
+
+------> if you juste want to create the blockchain you can run all these steps on the terminal cmd:
 ```bash
 # Initialize configuration files and genesis file
   # moniker is the name of your node
@@ -85,7 +89,8 @@ sd start
 ****will the blockchain smart city is running, I can go to``` http://localhost:26657/ ```to see all the available endpoints.
 
 ```
-NOTE: #Comment on peut avoir deux validateurs sur le même blockchain:
+ 
+#NOTE: #Comment on peut avoir deux validateurs sur le même blockchain:
 ``` bash
 1) Supprimer .sd et .scli dossiers dans le dossier racine à 2 nœuds.
    ```rm -rf ~/.s*``` 
@@ -120,7 +125,7 @@ scli query account $(scli keys show validator -a)
 
 # get your first info from sensor using your coins from the genesis file
 
-scli tx smartcity get-info <timestamp received from the ttn> co2 co ph turbi longitude latitude  --from jack
+scli tx smartcity get-info <timestamp received from the ttn> co2 co ph turbi pays region  --from jack
 
 
 #you can also query a single transaction by its hash using the following command:
@@ -136,11 +141,6 @@ scli query smartcity times
 scli query smartcity GiveInfo < timestamp>
 
 # > {"value":"","owner":"cosmos1l7k5tdt2qam0zecxrx78yuw447ga54dsmtpk2s","price":[{"denom":"token","amount":"10"}]}
-
-
-# Validator decides to delete the value 
-
-scli tx smartcity delete-info  < le nom de capteur > --from jack
 
 # Try out a GiveInfo query against the info you just deleted
 
