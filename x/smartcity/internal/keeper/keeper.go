@@ -58,15 +58,15 @@ func (k Keeper) DeleteGiveInfo(ctx sdk.Context, name string) {
 }*/
 
 // SetInfo - sets the value string that a name resolves to
-func (k Keeper) GetInfo(ctx sdk.Context, timestamp string, co2 string, co string, ph string, turbi string, longitude string, latitude string) {
+func (k Keeper) GetInfo(ctx sdk.Context, timestamp string, co2 string, co string, ph string, turbi string, pays string, region string) {
 	GiveInfo := k.GetGiveInfo(ctx, timestamp)
 	GiveInfo.TIMESTAMP = timestamp
 	GiveInfo.CO2 = co2
 	GiveInfo.CO = co
 	GiveInfo.PH = ph
 	GiveInfo.TURBI = turbi
-	GiveInfo.LONGITUDE = longitude
-	GiveInfo.LATITUDE = latitude
+	GiveInfo.PAYS = pays
+	GiveInfo.REGION = region
 	k.SetGiveInfo(ctx, timestamp, GiveInfo)
 }
 
@@ -81,15 +81,15 @@ func (k Keeper) GetOwner(ctx sdk.Context, name string) sdk.AccAddress {
 }
 
 // SetOwner - sets the current owner of a name
-func (k Keeper) SetOwner(ctx sdk.Context, timestamp string, co2 string, co string, ph string, turbi string, longitude string, latitude string, owner sdk.AccAddress) {
+func (k Keeper) SetOwner(ctx sdk.Context, timestamp string, co2 string, co string, ph string, turbi string, pays string, region string, owner sdk.AccAddress) {
 	GiveInfo := k.GetGiveInfo(ctx, timestamp)
 	GiveInfo.TIMESTAMP = timestamp
 	GiveInfo.CO2 = co2
 	GiveInfo.CO = co
 	GiveInfo.PH = ph
 	GiveInfo.TURBI = turbi
-	GiveInfo.LONGITUDE = longitude
-	GiveInfo.LATITUDE = latitude
+	GiveInfo.PAYS = pays
+	GiveInfo.REGION = region
 	GiveInfo.Owner = owner
 	k.SetGiveInfo(ctx, timestamp, GiveInfo)
 }

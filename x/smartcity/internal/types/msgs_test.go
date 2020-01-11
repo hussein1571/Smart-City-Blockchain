@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var name = "maTurtle"
+var timestamp = "maTurtle"
 
 /*func TestMsgSetInfo(t *testing.T) {
 	value := "1"
@@ -67,10 +67,10 @@ func TestMsgGetInfo(t *testing.T) {
 	co := "2"
 	ph := "3"
 	turbi := "4"
-	longitude := "5"
-	latitude := "6"
+	pays := "5"
+	region := "6"
 	timestamp := "a"
-	var msg = NewMsgGetInfo(timestamp, co2, co, ph, turbi, longitude, latitude, acc)
+	var msg = NewMsgGetInfo(timestamp, co2, co, ph, turbi, pays, region, acc)
 
 	require.Equal(t, msg.Route(), RouterKey)
 	require.Equal(t, msg.Type(), "get_info")
@@ -82,10 +82,11 @@ func TestMsgGetInfoValidation(t *testing.T) {
 	co := "2"
 	ph := "3"
 	turbi := "4"
-	longitude := "5"
-	latitude := "6"
+	pays := "5"
+	region := "6"
+
 	//value6 := "7"
-	timestamp := "a"
+
 	//acc2 := sdk.AccAddress([]byte("you"))
 	//coins := sdk.NewCoins(sdk.NewInt64Coin("atom", 10))
 
@@ -93,8 +94,8 @@ func TestMsgGetInfoValidation(t *testing.T) {
 		valid bool
 		tx    MsgGetInfo
 	}{
-		{true, NewMsgGetInfo(timestamp, co2, co, ph, turbi, longitude, latitude, acc)},
-		//{true, NewMsgGetInfo(name, value6, co, ph, turbi, longitude, latitude, acc)},
+		{true, NewMsgGetInfo(timestamp, co2, co, ph, turbi, pays, region, acc)},
+		//{false, NewMsgGetInfo(timestamp, co21, co1, ph1, turbi1, longitude1, latitude1, acc)},
 	}
 
 	for _, tc := range cases {
@@ -113,11 +114,11 @@ func TestMsgGetInfoGetSignBytes(t *testing.T) {
 	co := "2"
 	ph := "3"
 	turbi := "4"
-	longitude := "5"
-	latitude := "6"
+	pays := "5"
+	region := "6"
 	timestamp := "a"
 	//coins := sdk.NewCoins(sdk.NewInt64Coin("atom", 10))
-	var msg = NewMsgGetInfo(timestamp, co2, co, ph, turbi, longitude, latitude, acc)
+	var msg = NewMsgGetInfo(timestamp, co2, co, ph, turbi, pays, region, acc)
 	res := msg.GetSignBytes()
 
 	expected := `{"type":"smartcity/GetInfo","value":{{"name":"maTurtle","owner":"cosmos1d4js690r9j"},}`
@@ -127,7 +128,7 @@ func TestMsgGetInfoGetSignBytes(t *testing.T) {
 
 func TestMsgDeleteInfo(t *testing.T) {
 	acc := sdk.AccAddress([]byte("me"))
-	var msg = NewMsgDeleteInfo(name, acc)
+	var msg = NewMsgDeleteInfo(timestamp, acc)
 
 	require.Equal(t, msg.Route(), RouterKey)
 	require.Equal(t, msg.Type(), "delete-info")
@@ -135,15 +136,15 @@ func TestMsgDeleteInfo(t *testing.T) {
 
 func TestMsgDeleteInfoValidation(t *testing.T) {
 	acc := sdk.AccAddress([]byte("me"))
-	name2 := "a"
-	acc2 := sdk.AccAddress([]byte("you"))
+	//name2 := "a"
+	//acc2 := sdk.AccAddress([]byte("you"))
 
 	cases := []struct {
 		valid bool
 		tx    MsgDeleteInfo
 	}{
-		{true, NewMsgDeleteInfo(name, acc)},
-		{true, NewMsgDeleteInfo(name2, acc2)},
+		{true, NewMsgDeleteInfo(timestamp, acc)},
+		//{true, NewMsgDeleteInfo(name2, acc2)},
 	}
 
 	for _, tc := range cases {
@@ -158,7 +159,7 @@ func TestMsgDeleteInfoValidation(t *testing.T) {
 
 func TestMsgDeleteInfoGetSignBytes(t *testing.T) {
 	acc := sdk.AccAddress([]byte("me"))
-	var msg = NewMsgDeleteInfo(name, acc)
+	var msg = NewMsgDeleteInfo(timestamp, acc)
 	res := msg.GetSignBytes()
 
 	expected := `{"type":"smartcity/DeleteInfo","value":{"Info":"maTurtle","owner":"cosmos1d4js690r9j"}}`

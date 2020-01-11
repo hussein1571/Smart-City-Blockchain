@@ -52,7 +52,7 @@ ttn.data(appID, accessKey)
         console.log(response.geonames[0].toponymName);
 
         // Transformation de la date (string) en timestamp (millisecondes)
-        let timestamp = Date.parse(message.metadata.time);
+        let timestamp = Date.parse(message.metadata.time)/1000;
 	console.log(timestamp);
         //Enregistrement des données dans MongoDB se trouvant sur le PC Hote (miner + angular + mongo)
         const data = JSON.stringify({
@@ -62,10 +62,11 @@ ttn.data(appID, accessKey)
           "date": timestamp,
           "record": { "CO": message.payload_fields.Carbonmono, "CO2": message.payload_fields.Carbondi, "PH": message.payload_fields.PHvalue, "Turbi": message.payload_fields.Turbi }
         });
-var data2 = message.payload_fields.Carbondi + " " + message.payload_fields.Carbonmono + " " + message.payload_fields.PHvalue + " " + message.payload_fields.Turbi + " " + timestamp + " " + message.metadata.latitude + " " + message.metadata.longitude + "\n";
+var data2 = message.payload_fields.Carbondi + " " + message.payload_fields.Carbonmono + " " + message.payload_fields.PHvalue + " " + message.payload_fields.Turbi + " " + timestamp + " " + pays + " " + region + "\n";
         
 
- fs.appendFile('n1.txt', data2, function (err) {
+//fs.appendFile('n1.txt', data2, function (err)
+fs.appendFile('n1.txt', data2, function (err) {
    if (err) throw err;
    console.log('Saved!');
 });

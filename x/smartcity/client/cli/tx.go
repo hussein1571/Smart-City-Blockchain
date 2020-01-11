@@ -33,7 +33,7 @@ func GetTxCmd(storeKey string, cdc *codec.Codec) *cobra.Command {
 // GetCmdGetInfo is the CLI command for sending a GetInfo transaction
 func GetCmdGetInfo(cdc *codec.Codec) *cobra.Command {
 	return &cobra.Command{
-		Use:   "get-info [timestamp][co2] [co] [ph] [turbi] [longitude] [latitude]",
+		Use:   "get-info [timestamp][co2] [co] [ph] [turbi] [Pays] [Region]",
 		Short: "bid for existing name or claim new name",
 		Args:  cobra.ExactArgs(7),
 		RunE: func(cmd *cobra.Command, args []string) error {

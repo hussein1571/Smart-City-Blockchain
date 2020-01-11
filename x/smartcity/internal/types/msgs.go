@@ -57,22 +57,22 @@ type MsgGetInfo struct {
 	CO        string `json:"co"`
 	PH        string `json:"ph"`
 	TURBI     string `json:"turbi"`
-	LONGITUDE string `json:"longitude"`
-	LATITUDE  string `json:"latitude"`
+	PAYS      string `json:"pays"`
+	REGION    string `json:"region"`
 	//Bid   sdk.Coins      `json:"bid"`
 	Getter sdk.AccAddress `json:"getter"`
 }
 
 // NewMsgGetInfo is the constructor function for MsgGetInfo
-func NewMsgGetInfo(timestamp string, co2 string, co string, ph string, turbi string, longitude string, latitude string, getter sdk.AccAddress) MsgGetInfo {
+func NewMsgGetInfo(timestamp string, co2 string, co string, ph string, turbi string, pays string, region string, getter sdk.AccAddress) MsgGetInfo {
 	return MsgGetInfo{
 		TIMESTAMP: timestamp,
 		CO2:       co2,
 		CO:        co,
 		PH:        ph,
 		TURBI:     turbi,
-		LONGITUDE: longitude,
-		LATITUDE:  latitude,
+		PAYS:      pays,
+		REGION:    region,
 		//Bid:   bid,
 		Getter: getter,
 	}

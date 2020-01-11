@@ -17,8 +17,8 @@ type GiveInfo struct {
 	CO        string         //`json:"co"`
 	PH        string         //`json:"ph"`
 	TURBI     string         //`json:"turbi"`
-	LONGITUDE string         //`json:"longitude"`
-	LATITUDE  string         //`json:"latitude"`
+	PAYS      string         //`json:"longitude"`
+	REGION    string         //`json:"latitude"`
 	Owner     sdk.AccAddress `json:"owner"`
 	//Price sdk.Coins      `json:"price"`
 }
@@ -40,5 +40,5 @@ func (w GiveInfo) String() string {
 %s
 %s
 %s
-%s`, w.Owner, w.TIMESTAMP, w.CO2, w.CO, w.PH, w.TURBI, w.LONGITUDE, w.LATITUDE))
+%s`, w.Owner, w.TIMESTAMP, w.CO2, w.CO, w.PH, w.TURBI, w.PAYS, w.REGION))
 }

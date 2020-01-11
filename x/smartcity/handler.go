@@ -51,8 +51,8 @@ func handleMsgGetInfo(ctx sdk.Context, keeper Keeper, msg MsgGetInfo) sdk.Result
 	//		return sdk.ErrInsufficientCoins("Getter does not have enough coins").Result()
 	//	}
 	//}
-	keeper.GetInfo(ctx, msg.TIMESTAMP, msg.CO2, msg.CO, msg.PH, msg.TURBI, msg.LONGITUDE, msg.LATITUDE)
-	keeper.SetOwner(ctx, msg.TIMESTAMP, msg.CO2, msg.CO, msg.PH, msg.TURBI, msg.LONGITUDE, msg.LATITUDE, msg.Getter)
+	keeper.GetInfo(ctx, msg.TIMESTAMP, msg.CO2, msg.CO, msg.PH, msg.TURBI, msg.PAYS, msg.REGION)
+	keeper.SetOwner(ctx, msg.TIMESTAMP, msg.CO2, msg.CO, msg.PH, msg.TURBI, msg.PAYS, msg.REGION, msg.Getter)
 	//keeper.SetPrice(ctx, msg.Name, msg.Bid)
 	return sdk.Result{}
 }

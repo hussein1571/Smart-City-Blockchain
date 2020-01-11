@@ -52,8 +52,8 @@ func GetQueryCmd(storeKey string, cdc *codec.Codec) *cobra.Command {
 // GetCmdWhois queries information about a domain
 func GetCmdGiveInfo(queryRoute string, cdc *codec.Codec) *cobra.Command {
 	return &cobra.Command{
-		Use:   "GiveInfo [name][name][name][name]",
-		Short: "Query GiveInfo info of name",
+		Use:   "GiveInfo [Timestamp]",
+		Short: "Query GiveInfo info of timestamp",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cliCtx := context.NewCLIContext().WithCodec(cdc)
